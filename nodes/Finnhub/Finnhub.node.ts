@@ -1,35 +1,29 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { httpVerbFields, httpVerbOperations } from './HttpVerbDescription';
 
-export class HttpBin implements INodeType {
+import { stockFields, stockOperations } from './StockDescription';
+
+import { finnhubApiRequest, finnhubRequestAllItems } from './GenericFunctions';
+
+export class Finnhub implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'HttpBin',
-		name: 'httpBin',
+		displayName: 'Finnhub.io',
+		name: 'finnhub',
 		icon: 'file:httpbin.svg',
-		group: ['transform'],
+		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Interact with HttpBin API',
+		description: 'Consume Finnhub.io API',
 		defaults: {
-			name: 'HttpBin',
-			color: '#3b4151',
+			name: 'Finnhub',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'httpbinApi',
-				required: false,
+				name: 'finnhubApi',
+				required: true,
 			},
 		],
-		requestDefaults: {
-			baseURL: 'https://httpbin.org',
-			url: '',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-		},
 		/**
 		 * In the properties array we have two mandatory options objects required
 		 *
@@ -49,15 +43,17 @@ export class HttpBin implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'HTTP Verb',
-						value: 'httpVerb',
+						name: 'Stock',
+						value: 'stock',
 					},
 				],
-				default: 'httpVerb',
-			},
 
-			...httpVerbOperations,
-			...httpVerbFields,
+				...stockOperations,
+				...stockFields,
+
+
+				default: 'stock',
+			},
 		],
 	};
 }
