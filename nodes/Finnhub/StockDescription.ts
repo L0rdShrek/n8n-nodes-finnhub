@@ -24,10 +24,10 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/search',
 						qs: {
-							q: '={{$parameter.symbolLookup}}'
-						}
-					}
-				}
+							q: '={{$parameter.symbolLookup}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Stock Symbol',
@@ -40,10 +40,10 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/symbol',
 						qs: {
-							exchange: '={{$parameter.exchange}}'
-						}
-					}
-				}
+							exchange: '={{$parameter.exchange}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Company Profile [PREMIUM]',
@@ -55,10 +55,10 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/profile',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Company Profile 2',
@@ -70,10 +70,10 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/profile2',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Peers',
@@ -85,10 +85,10 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/peers',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Basic Financials',
@@ -101,10 +101,10 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/metric',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-							metric: 'all'
-						}
-					}
-				}
+							metric: 'all',
+						},
+					},
+				},
 			},
 			{
 				name: 'Recommendation Trends',
@@ -117,9 +117,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/recommendation',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
 			{
 				name: 'Price Target [PREMIUM]',
@@ -132,9 +132,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/price-target',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
 			{
 				name: 'Earnings Surprises',
@@ -147,9 +147,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/earnings',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
 			{
 				name: 'Quote',
@@ -162,9 +162,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/quote',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
 			{
 				name: 'Last Bid-Ask [PREMIUM]',
@@ -177,9 +177,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/bidask',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
 			{
 				name: 'Dividends 2 (Basic) [PREMIUM]',
@@ -192,12 +192,10 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/dividend2',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
-						}
-					}
-				}
+						},
+					},
+				},
 			},
-
-
 		],
 		default: 'symbolLookup',
 	},
@@ -239,7 +237,18 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['companyProfile', 'companyProfile2', 'peers', 'basicFinancials', 'recommendationTrends', 'priceTarget', 'earningsSurprises', 'quote', 'lastBidAsk', 'dividends2'],
+				operation: [
+					'companyProfile',
+					'companyProfile2',
+					'peers',
+					'basicFinancials',
+					'recommendationTrends',
+					'priceTarget',
+					'earningsSurprises',
+					'quote',
+					'lastBidAsk',
+					'dividends2',
+				],
 				resource: ['stock'],
 			},
 		},

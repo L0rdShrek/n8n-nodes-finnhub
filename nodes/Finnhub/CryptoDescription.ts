@@ -21,8 +21,8 @@ export const cryptoOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/crypto/exchange',
-					}
-				}
+					},
+				},
 			},
 			{
 				name: 'Crypto Symbol',
@@ -34,10 +34,10 @@ export const cryptoOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/crypto/symbol',
 						qs: {
-							exchange: '={{$parameter.exchange}}'
-						}
-					}
-				}
+							exchange: '={{$parameter.exchange}}',
+						},
+					},
+				},
 			},
 		],
 		default: 'cryptoExchanges',

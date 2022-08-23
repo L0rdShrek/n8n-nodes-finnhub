@@ -23,10 +23,10 @@ export const alternativeOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/social-sentiment',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'USPTO Patents',
@@ -40,15 +40,16 @@ export const alternativeOperations: INodeProperties[] = [
 						qs: {
 							symbol: '={{$parameter.symbol}}',
 							from: '={{new Date($parameter.fromDate).toISOString().substr(0,10)}}',
-							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}'
-						}
-					}
-				}
+							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'H1-B Visa Application',
 				value: 'visa-application',
-				description: 'Get a list of H1-B and Permanent visa applications for companies from the DOL',
+				description:
+					'Get a list of H1-B and Permanent visa applications for companies from the DOL',
 				action: 'Get a list of h1 b and permanent visa applications',
 				routing: {
 					request: {
@@ -57,10 +58,10 @@ export const alternativeOperations: INodeProperties[] = [
 						qs: {
 							symbol: '={{$parameter.symbol}}',
 							from: '={{new Date($parameter.fromDate).toISOString().substr(0,10)}}',
-							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}'
-						}
-					}
-				}
+							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Senate Lobbying',
@@ -74,15 +75,16 @@ export const alternativeOperations: INodeProperties[] = [
 						qs: {
 							symbol: '={{$parameter.symbol}}',
 							from: '={{new Date($parameter.fromDate).toISOString().substr(0,10)}}',
-							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}'
-						}
-					}
-				}
+							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'USA Spending',
 				value: 'usaSpending',
-				description: 'Get a list of government\'s spending activities from USASpending dataset for public companies',
+				description:
+					"Get a list of government's spending activities from USASpending dataset for public companies",
 				action: 'Get a list of government spending activities',
 				routing: {
 					request: {
@@ -91,10 +93,10 @@ export const alternativeOperations: INodeProperties[] = [
 						qs: {
 							symbol: '={{$parameter.symbol}}',
 							from: '={{new Date($parameter.fromDate).toISOString().substr(0,10)}}',
-							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}'
-						}
-					}
-				}
+							to: '={{new Date($parameter.toDate).toISOString().substr(0,10)}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'FDA Committee Meeting Calendar',
@@ -105,10 +107,9 @@ export const alternativeOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/fda-advisory-committee-calendar',
-					}
-				}
+					},
+				},
 			},
-
 		],
 		default: 'socialSentiment',
 	},
@@ -122,7 +123,13 @@ export const alternativeFields: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['socialSentiment', 'usptoPatents', 'visa-application', 'lobbying', 'usaSpending'],
+				operation: [
+					'socialSentiment',
+					'usptoPatents',
+					'visa-application',
+					'lobbying',
+					'usaSpending',
+				],
 				resource: ['alternative'],
 			},
 		},

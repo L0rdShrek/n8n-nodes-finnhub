@@ -21,8 +21,8 @@ export const forexOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/forex/exchange',
-					}
-				}
+					},
+				},
 			},
 			{
 				name: 'Forex Symbol',
@@ -34,10 +34,10 @@ export const forexOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/forex/symbol',
 						qs: {
-							exchange: '={{$parameter.exchange}}'
-						}
-					}
-				}
+							exchange: '={{$parameter.exchange}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'Forex Rates [PREMIUM]',
@@ -49,12 +49,11 @@ export const forexOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/forex/rates',
 						qs: {
-							base: '={{$parameter.base}}'
-						}
-					}
-				}
+							base: '={{$parameter.base}}',
+						},
+					},
+				},
 			},
-
 		],
 		default: 'forexExchanges',
 	},

@@ -1,8 +1,4 @@
-
-import {
-	INodeType,
-	INodeTypeDescription,
-} from 'n8n-workflow';
+import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 
 import { stockFields, stockOperations } from './StockDescription';
 import { indexFields, indexOperations } from './IndexDescription';
@@ -36,7 +32,7 @@ export class Finnhub implements INodeType {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-			}
+			},
 		},
 		properties: [
 			{
@@ -94,13 +90,6 @@ export class Finnhub implements INodeType {
 	};
 
 	methods = {
-		loadOptions: {
-
-		}
+		loadOptions: {},
 	};
-
-
-
-
-
 }

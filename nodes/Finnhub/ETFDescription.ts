@@ -22,10 +22,10 @@ export const etfOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/etf/profile',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'ETFs Holdings [PREMIUM]',
@@ -37,10 +37,10 @@ export const etfOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/etf/holdings',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'ETFs Sector Exposure [PREMIUM]',
@@ -52,10 +52,10 @@ export const etfOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/etf/sector',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 			{
 				name: 'ETFs Country Exposure [PREMIUM]',
@@ -67,10 +67,10 @@ export const etfOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/etf/country',
 						qs: {
-							symbol: '={{$parameter.symbol}}'
-						}
-					}
-				}
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
 			},
 		],
 		default: 'etfProfile',
