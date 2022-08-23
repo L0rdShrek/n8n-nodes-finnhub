@@ -1,8 +1,15 @@
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+
+import {
+	INodeType,
+	INodeTypeDescription,
+} from 'n8n-workflow';
 
 import { stockFields, stockOperations } from './StockDescription';
-
-import { finnhubApiRequest, finnhubRequestAllItems } from './GenericFunctions';
+import { indexFields, indexOperations } from './IndexDescription';
+import { etfFields, etfOperations } from './ETFDescription';
+import { forexFields, forexOperations } from './ForexDescription';
+import { cryptoFields, cryptoOperations } from './CryptoDescription';
+import { alternativeFields, alternativeOperations } from './AlternativeDescription';
 
 export class Finnhub implements INodeType {
 	description: INodeTypeDescription = {
@@ -24,36 +31,76 @@ export class Finnhub implements INodeType {
 				required: true,
 			},
 		],
-		/**
-		 * In the properties array we have two mandatory options objects required
-		 *
-		 * [Resource & Operation]
-		 *
-		 * https://docs.n8n.io/integrations/creating-nodes/code/create-first-node/#resources-and-operations
-		 *
-		 * In our example, the operations are separated into their own file (HTTPVerbDescription.ts)
-		 * to keep this class easy to read.
-		 *
-		 */
+		requestDefaults: {
+			baseURL: 'https://finnhub.io/api/v1',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			}
+		},
 		properties: [
 			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
+				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{
 						name: 'Stock',
 						value: 'stock',
 					},
+					{
+						name: 'Index',
+						value: 'index',
+					},
+					{
+						name: 'ETF',
+						value: 'etf',
+					},
+					{
+						name: 'Forex',
+						value: 'forex',
+					},
+					{
+						name: 'Crypto',
+						value: 'crypto',
+					},
+					{
+						name: 'Alternative',
+						value: 'alternative',
+					},
 				],
-
-				...stockOperations,
-				...stockFields,
-
-
 				default: 'stock',
 			},
+			...stockOperations,
+			...stockFields,
+
+			...indexOperations,
+			...indexFields,
+
+			...etfOperations,
+			...etfFields,
+
+			...forexOperations,
+			...forexFields,
+
+			...cryptoOperations,
+			...cryptoFields,
+
+			...alternativeOperations,
+			...alternativeFields,
 		],
 	};
+
+	methods = {
+		loadOptions: {
+
+		}
+	};
+
+
+
+
+
 }

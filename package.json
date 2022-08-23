@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-finnhub",
   "version": "0.1.0",
-  "description": "",
+  "description": "Lorem Ipsum",
   "keywords": [
     "n8n-community-node-package"
   ],
@@ -9,7 +9,7 @@
   "homepage": "",
   "author": {
     "name": "Florian Niefünd",
-    "email": ""
+    "email": "florian@niefuend.org"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/Finnhub.credentials.js"
+      "dist/credentials/FinnhubApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/Finnhub/Finnhub.node.js"

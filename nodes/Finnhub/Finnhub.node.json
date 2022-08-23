@@ -2,10 +2,7 @@
 	"node": "n8n-nodes-community.finnhub",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": [
-		"Productivity",
-		"Finance & Accounting"
-	],
+	"categories": ["Productivity", "Finance & Accounting"],
 	"resources": {
 		"credentialDocumentation": [
 			{
