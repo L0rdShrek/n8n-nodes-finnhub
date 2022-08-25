@@ -1,6 +1,4 @@
-<p align="center">
-	![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/logo.png)
-</p>
+![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/logo.png)
 
 <h1 align="center">
   🛠 Finnhub.io REST API node for <code>n8n</code>
