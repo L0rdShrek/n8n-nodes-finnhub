@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-finnhub",
-  "version": "0.1.4",
-  "description": "Lorem Ipsum",
+  "version": "0.1.5",
+  "description": "n8n node to consume the finnhub.io REST API",
   "keywords": [
     "n8n-community-node-package",
     "n8n-node-athon",
@@ -15,7 +15,7 @@
     "API"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.niefuend.org",
   "author": {
     "name": "Florian Niefünd",
     "email": "florian@niefuend.org"
