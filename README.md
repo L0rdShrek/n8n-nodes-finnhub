@@ -1,47 +1,63 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-finnhub_
 
-# n8n-nodes-starter
+This is an n8n community node. It lets you use _finnhub.io_ in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+_finnhub.io_ is a Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto.  
+Access real-time stock API, institutional-grade fundamental and alternative data to supercharge your investment for FREE.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-## Prerequisites
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)  <!-- delete if no auth needed -->  
+[Compatibility](#compatibility)  
+[Usage](#usage)  <!-- delete if not using this section -->  
+[Resources](#resources)  
+[Version history](#version-history)  <!-- delete if not using this section -->  
 
-You need the following installed on your development machine:
+## Installation
 
-* [git](https://git-scm.com/downloads)
-* Node.js and npm. Minimum version Node 16. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-	```
-	npm install n8n -g
-	```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+
+## Operations
+
+* [Stock Fundamentals](https://finnhub.io/docs/api/symbol-search)
+* [Stock Estimates](https://finnhub.io/docs/api/recommendation-trends)
+* [Stock Price](https://finnhub.io/docs/api/quote)
+* [ETFs & Indices](https://finnhub.io/docs/api/indices-constituents)
+* [Mutual Funds](https://finnhub.io/docs/api/symbol-search)
+<!--* [Bonds](https://finnhub.io/docs/api/bond-profile) comming soon-->
+* [Forex](https://finnhub.io/docs/api/forex-exchanges)
+* [Crypto](https://finnhub.io/docs/api/crypto-exchanges)
+* [Technical Analysis](https://finnhub.io/docs/api/pattern-recognition)
+* [Alternative Data](https://finnhub.io/docs/api/transcripts-list)
+* [Economic](https://finnhub.io/docs/api/country)
+
+## Credentials
+
+Get your [free API key](https://finnhub.io/dashboard) for Finnhub Stock API
+
+## Compatibility
+
+The Latest Version of n8n
+
+## Usage
+
+Add the node to your workflow and and get data from the finnhub.io REST API.
+
+![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/main/docs/component.png)
+
+![Trigger node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/main/docs/node.png)
 
 
-## Using this starter
+## Resources
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [Finnhub API Documentation](https://finnhub.io/docs/api)
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-    ```
-    git clone https://github.com/<your organization>/<your-repo-name>.git
-    ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+## Version history
 
-## More information
+* comming soon
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
 
-## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
