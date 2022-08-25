@@ -7,14 +7,13 @@
 	This is an n8n community node. It lets you use _finnhub.io_ in your n8n workflows.
 	<br />
 	<br />
-	_finnhub.io_ is a Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto.  
+	finnhub.io is a Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto.  
 	<br />
 	Access real-time stock API, institutional-grade fundamental and alternative data to supercharge your investment for FREE.
 </p>
 
-<p align="center">
-	[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
-</p>
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
+
 
 [Installation](#installation)  
 [Credentials](#credentials)  <!-- delete if no auth needed -->  
