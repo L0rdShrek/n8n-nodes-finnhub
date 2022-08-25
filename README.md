@@ -45,9 +45,9 @@ The Latest Version of n8n
 
 Add the node to your workflow and and get data from the finnhub.io REST API.
 
-![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/main/docs/component.png)
+![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/component.png)
 
-![Trigger node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/main/docs/node.png)
+![Trigger node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/node.png)
 
 
 ## Resources
