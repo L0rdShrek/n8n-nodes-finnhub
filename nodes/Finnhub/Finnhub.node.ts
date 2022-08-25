@@ -11,7 +11,7 @@ export class Finnhub implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Finnhub.io',
 		name: 'finnhub',
-		icon: 'file:httpbin.svg',
+		icon: 'file:finnhub.svg',
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
