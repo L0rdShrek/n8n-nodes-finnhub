@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-param-display-name-miscased */
 import { INodeProperties } from 'n8n-workflow';
 
 export const stockOperations: INodeProperties[] = [
@@ -41,6 +42,9 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/symbol',
 						qs: {
 							exchange: '={{$parameter.exchange}}',
+							mic: '={{$parameter.mic}}',
+							securityType: '={{$parameter.securityType}}',
+							currency: '={{$parameter.currency}}',
 						},
 					},
 				},
@@ -56,6 +60,8 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/profile',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
+							isin: '={{$parameter.isin}}',
+							cusip: '={{$parameter.cusip}}',
 						},
 					},
 				},
@@ -71,10 +77,95 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/profile2',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
+							isin: '={{$parameter.isin}}',
+							cusip: '={{$parameter.cusip}}',
 						},
 					},
 				},
 			},
+			{
+				name: 'Company Executive [PREMIUM]',
+				value: 'companyExecutive',
+				description: 'Get a list of company\'s executives and members of the Board',
+				action: 'Get company executive',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/executive',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Market News',
+				value: 'marketNews',
+				description: 'Get latest market news',
+				action: 'Get latest market news',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/news',
+						qs: {
+							category: '={{$parameter.category}}',
+							minId: '={{$parameter.minId}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Company News',
+				value: 'companyNews',
+				description: 'List latest company news by symbol. This endpoint is only available for North American companies.',
+				action: 'List latest company news',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/company-news',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							from: '={{$parameter.fromDateRequired}}',
+							to: '={{$parameter.toDateRequired}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Major Press Releases [PREMIUM]',
+				value: 'majorPressReleases',
+				description: 'Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.',
+				action: 'Get latest major press releases of a company',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/company-news',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							from: '={{$parameter.fromDate}}',
+							to: '={{$parameter.toDate}}',
+						},
+					},
+				},
+			},
+
+			{
+				name: 'News Sentiment [PREMIUM]',
+				value: 'newsSentiment',
+				description: 'Get company\'s news sentiment and statistics. This endpoint is only available for US companies.',
+				action: 'Get company news sentiment and statistics',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/company-news',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+						},
+					},
+				},
+			},
+
+
 			{
 				name: 'Peers',
 				value: 'peers',
@@ -220,6 +311,7 @@ export const stockFields: INodeProperties[] = [
 	{
 		displayName: 'Exchange',
 		name: 'exchange',
+		required: true,
 		type: 'string',
 		displayOptions: {
 			show: {
@@ -257,15 +349,191 @@ export const stockFields: INodeProperties[] = [
 		placeholder: 'AAPL',
 	},
 	{
-		displayName: 'Premium',
-		name: 'premium',
-		type: 'boolean',
+		displayName: 'Symbol',
+		name: 'symbolRequired',
+		type: 'string',
 		displayOptions: {
 			show: {
-				resource: ['stock', 'coin'],
+				operation: [
+					'companyExecutive', 'companyNews', 'newsSentiment'
+				],
+				resource: ['stock'],
 			},
 		},
-		default: false,
-		description: 'Whether you have a Premium Subscription for Finnhub.io',
+		default: 'AAPL',
+		description: 'Search by Symbol for a company profile',
+		placeholder: 'AAPL',
 	},
+	{
+		displayName: 'MIC Code',
+		name: 'mic',
+		type: 'string',
+		displayOptions: {
+			show: {
+				operation: ['symbolStock',],
+				resource: ['stock'],
+			},
+		},
+		default: '',
+		description: 'Filter by MIC code',
+		placeholder: 'XNYS',
+	},
+	{
+		displayName: 'securityType',
+		name: 'securityType',
+		type: 'string',
+		displayOptions: {
+			show: {
+				operation: ['symbolStock',],
+				resource: ['stock'],
+			},
+		},
+		default: '',
+		description: 'Filter by security type used by OpenFigi standard',
+		placeholder: 'securityType',
+	},
+	{
+		displayName: 'currency',
+		name: 'currency',
+		type: 'string',
+		displayOptions: {
+			show: {
+				operation: ['symbolStock',],
+				resource: ['stock'],
+			},
+		},
+		default: '',
+		description: 'Filter by currency',
+		placeholder: 'currency',
+	},
+	{
+		displayName: 'isin',
+		name: 'isin',
+		type: 'string',
+		displayOptions: {
+			show: {
+				operation: ['companyProfile','companyProfile2',],
+				resource: ['stock'],
+			},
+		},
+		default: '',
+		description: 'International Securities Identification Number',
+		placeholder: 'US5949181045',
+	},
+	{
+		displayName: 'cusip',
+		name: 'cusip',
+		type: 'string',
+		displayOptions: {
+			show: {
+				operation: ['companyProfile','companyProfile2',],
+				resource: ['stock'],
+			},
+		},
+		default: '',
+		description: 'Committee on Uniform Security Identification Procedure',
+		placeholder: '023135106',
+	},
+	{
+		displayName: 'Category',
+		name: 'category',
+		type: 'options',
+		displayOptions: {
+			show: {
+				operation: ['marketNews',],
+				resource: ['stock'],
+			},
+		},
+		options: [
+			{
+				name: 'General',
+				value: 'general',
+			},
+			{
+				name: 'Forex',
+				value: 'forex',
+			},
+			{
+				name: 'Crypto',
+				value: 'crypto',
+			},
+			{
+				name: 'Merger',
+				value: 'merger',
+			},
+		],
+		default: 'general',
+		description: 'Committee on Uniform Security Identification Procedure',
+		placeholder: '023135106',
+	},
+	{
+		displayName: 'minId',
+		name: 'minId',
+		type: 'number',
+		displayOptions: {
+			show: {
+				operation: ['marketNews',],
+				resource: ['stock'],
+			},
+		},
+		typeOptions: {
+			minValue: 0,
+			numberStepSize: 1,
+		},
+		default: 0,
+		description: 'Use this field to get only news after this ID',
+		placeholder: '1337',
+	},
+
+	{
+		displayName: 'From Date',
+		name: 'fromDateRequired',
+		type: 'dateTime',
+		required: true,
+		displayOptions: {
+			show: {
+				operation: ['companyNews',],
+				resource: ['stock'],
+			},
+		},
+		default: '2021-01-01',
+	},
+	{
+		displayName: 'To Date',
+		name: 'toDateRequired',
+		type: 'dateTime',
+		required: true,
+		displayOptions: {
+			show: {
+				operation: ['companyNews',],
+				resource: ['stock'],
+			},
+		},
+		default: '2021-12-31',
+	},
+	{
+		displayName: 'From Date',
+		name: 'fromDate',
+		type: 'dateTime',
+		displayOptions: {
+			show: {
+				operation: ['majorPressReleases',],
+				resource: ['stock'],
+			},
+		},
+		default: '2021-01-01',
+	},
+	{
+		displayName: 'To Date',
+		name: 'toDate',
+		type: 'dateTime',
+		displayOptions: {
+			show: {
+				operation: ['majorPressReleases',],
+				resource: ['stock'],
+			},
+		},
+		default: '2021-12-31',
+	},
+
 ];
