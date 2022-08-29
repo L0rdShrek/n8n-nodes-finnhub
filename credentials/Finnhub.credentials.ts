@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/cred-class-field-name-unsuffixed,n8n-nodes-base/cred-class-name-unsuffixed */
 import {
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
@@ -5,8 +6,8 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class FinnhubApi implements ICredentialType {
-	name = 'finnhubApi';
+export class Finnhub implements ICredentialType {
+	name = 'finnhub';
 	displayName = 'Finnhub.io API';
 	documentationUrl = 'https://finnhub.io/docs/api';
 	properties: INodeProperties[] = [

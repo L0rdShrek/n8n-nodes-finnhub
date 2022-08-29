@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-class-description-credentials-name-unsuffixed */
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 
 import { stockFields, stockOperations } from './StockDescription';
@@ -23,7 +24,7 @@ export class Finnhub implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'finnhubApi',
+				name: 'finnhub',
 				required: true,
 			},
 		],
