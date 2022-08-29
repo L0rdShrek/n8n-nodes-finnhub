@@ -1,21 +1,14 @@
 {
   "name": "n8n-nodes-finnhub",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "n8n node to consume the finnhub.io REST API",
-  "keywords": [
-    "n8n-community-node-package",
-    "n8n-node-athon",
-    "n8n",
-    "nodemation",
-    "nodes",
-    "custom",
-    "workflow",
-    "finnhub",
-    "stock",
-    "API"
+  "keywords": ["n8n-community-node-package", "n8n-node-athon", "n8n", "nodemation", "nodes", "custom", "workflow", "finnhub", "stock", "API"
   ],
   "license": "MIT",
-  "homepage": "https://www.niefuend.org",
+  "homepage": "https://github.com/L0rdShrek/n8n-nodes-finnhub#readme",
+  "bugs": {
+    "url": "https://github.com/L0rdShrek/n8n-nodes-finnhub/issues"
+  },
   "author": {
     "name": "Florian Niefünd",
     "email": "florian@niefuend.org"
