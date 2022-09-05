@@ -86,7 +86,7 @@ export const stockOperations: INodeProperties[] = [
 			{
 				name: 'Company Executive [PREMIUM]',
 				value: 'companyExecutive',
-				description: 'Get a list of company\'s executives and members of the Board',
+				description: "Get a list of company's executives and members of the Board",
 				action: 'Get company executive',
 				routing: {
 					request: {
@@ -117,7 +117,8 @@ export const stockOperations: INodeProperties[] = [
 			{
 				name: 'Company News',
 				value: 'companyNews',
-				description: 'List latest company news by symbol. This endpoint is only available for North American companies.',
+				description:
+					'List latest company news by symbol. This endpoint is only available for North American companies.',
 				action: 'List latest company news',
 				routing: {
 					request: {
@@ -134,7 +135,8 @@ export const stockOperations: INodeProperties[] = [
 			{
 				name: 'Major Press Releases [PREMIUM]',
 				value: 'majorPressReleases',
-				description: 'Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.',
+				description:
+					'Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.',
 				action: 'Get latest major press releases of a company',
 				routing: {
 					request: {
@@ -148,11 +150,11 @@ export const stockOperations: INodeProperties[] = [
 					},
 				},
 			},
-
 			{
 				name: 'News Sentiment [PREMIUM]',
 				value: 'newsSentiment',
-				description: 'Get company\'s news sentiment and statistics. This endpoint is only available for US companies.',
+				description:
+					"Get company's news sentiment and statistics. This endpoint is only available for US companies.",
 				action: 'Get company news sentiment and statistics',
 				routing: {
 					request: {
@@ -164,8 +166,6 @@ export const stockOperations: INodeProperties[] = [
 					},
 				},
 			},
-
-
 			{
 				name: 'Peers',
 				value: 'peers',
@@ -177,6 +177,7 @@ export const stockOperations: INodeProperties[] = [
 						url: '/stock/peers',
 						qs: {
 							symbol: '={{$parameter.symbol}}',
+							grouping: '{{$parameter.grouping}}',
 						},
 					},
 				},
@@ -198,6 +199,87 @@ export const stockOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Ownership [Premium]',
+				value: 'ownership',
+				description:
+					'Get a full list of shareholders of a company in descending order of the number of shares held',
+				action: 'Get shareholders of a company',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/ownership',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Fund Ownership [Premium]',
+				value: 'fundOwnership',
+				description:
+					'Get a full list of shareholders of a company in descending order of the number of shares held',
+				action: 'Get shareholders of a company',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/fund-ownership',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Insider Transactions',
+				value: 'insiderTransactions',
+				description: 'Company insider transactions data sourced from Form 3,4,5',
+				action: 'Get company insider transactions',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/insider-transactions',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							from: '={{$parameter.fromDate}}',
+							to: '={{$parameter.toDate}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Insider Sentiment',
+				value: 'insiderSentiment',
+				description: 'Get insider sentiment data for US companies calculated',
+				action: 'Get company insider',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/insider-sentiment',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							from: '={{$parameter.fromDateRequired}}',
+							to: '={{$parameter.toDateRequired}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Financials As Reported',
+				value: 'financialsAsReported',
+				description: 'Get financials as reported',
+				action: 'Get financials as reported',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/financials-reported',
+						qs: {
+							symbol: '={{$parameter.symbol}}',
+						},
+					},
+				},
+			},
+			{
 				name: 'Recommendation Trends',
 				value: 'recommendationTrends',
 				description: 'Get latest analyst recommendation trends for a company',
@@ -207,7 +289,7 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/recommendation',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
 						},
 					},
 				},
@@ -222,7 +304,7 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/price-target',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
 						},
 					},
 				},
@@ -237,7 +319,7 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/earnings',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
 						},
 					},
 				},
@@ -252,7 +334,7 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/quote',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
 						},
 					},
 				},
@@ -267,7 +349,7 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/bidask',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
 						},
 					},
 				},
@@ -282,7 +364,24 @@ export const stockOperations: INodeProperties[] = [
 						method: 'GET',
 						url: '/stock/dividend2',
 						qs: {
-							symbol: '={{$parameter.symbol}}',
+							symbol: '={{$parameter.symbolRequired}}',
+						},
+					},
+				},
+			},
+
+			{
+				name: 'IPO Calendar',
+				value: 'ipoCalendar',
+				description: 'Get recent and upcoming IPO',
+				action: 'Get recent and upcoming IPO',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/calendar/ipo',
+						qs: {
+							from: '={{$parameter.fromDateRequired}}',
+							to: '={{$parameter.toDateRequired}}',
 						},
 					},
 				},
@@ -334,12 +433,7 @@ export const stockFields: INodeProperties[] = [
 					'companyProfile2',
 					'peers',
 					'basicFinancials',
-					'recommendationTrends',
-					'priceTarget',
-					'earningsSurprises',
-					'quote',
-					'lastBidAsk',
-					'dividends2',
+					'financialsAsReported',
 				],
 				resource: ['stock'],
 			},
@@ -355,7 +449,18 @@ export const stockFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [
-					'companyExecutive', 'companyNews', 'newsSentiment'
+					'companyExecutive',
+					'companyNews',
+					'newsSentiment',
+					'ownership',
+					'fundOwnership',
+					'insiderTransactions',
+					'recommendationTrends',
+					'priceTarget',
+					'earningsSurprises',
+					'quote',
+					'lastBidAsk',
+					'dividends2',
 				],
 				resource: ['stock'],
 			},
@@ -370,7 +475,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['symbolStock',],
+				operation: ['symbolStock'],
 				resource: ['stock'],
 			},
 		},
@@ -384,7 +489,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['symbolStock',],
+				operation: ['symbolStock'],
 				resource: ['stock'],
 			},
 		},
@@ -398,7 +503,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['symbolStock',],
+				operation: ['symbolStock'],
 				resource: ['stock'],
 			},
 		},
@@ -412,7 +517,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['companyProfile','companyProfile2',],
+				operation: ['companyProfile', 'companyProfile2'],
 				resource: ['stock'],
 			},
 		},
@@ -426,7 +531,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['companyProfile','companyProfile2',],
+				operation: ['companyProfile', 'companyProfile2'],
 				resource: ['stock'],
 			},
 		},
@@ -440,7 +545,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'options',
 		displayOptions: {
 			show: {
-				operation: ['marketNews',],
+				operation: ['marketNews'],
 				resource: ['stock'],
 			},
 		},
@@ -472,7 +577,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'number',
 		displayOptions: {
 			show: {
-				operation: ['marketNews',],
+				operation: ['marketNews'],
 				resource: ['stock'],
 			},
 		},
@@ -492,7 +597,7 @@ export const stockFields: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['companyNews',],
+				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar'],
 				resource: ['stock'],
 			},
 		},
@@ -505,7 +610,7 @@ export const stockFields: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['companyNews',],
+				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar'],
 				resource: ['stock'],
 			},
 		},
@@ -517,7 +622,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'dateTime',
 		displayOptions: {
 			show: {
-				operation: ['majorPressReleases',],
+				operation: ['majorPressReleases', 'insiderTransactions'],
 				resource: ['stock'],
 			},
 		},
@@ -529,11 +634,37 @@ export const stockFields: INodeProperties[] = [
 		type: 'dateTime',
 		displayOptions: {
 			show: {
-				operation: ['majorPressReleases',],
+				operation: ['majorPressReleases', 'insiderTransactions'],
 				resource: ['stock'],
 			},
 		},
 		default: '2021-12-31',
 	},
-
+	{
+		displayName: 'Grouping',
+		name: 'grouping',
+		type: 'options',
+		displayOptions: {
+			show: {
+				operation: ['peers'],
+				resource: ['stock'],
+			},
+		},
+		options: [
+			{
+				name: 'Sector',
+				value: 'sector',
+			},
+			{
+				name: 'Industry',
+				value: 'industry',
+			},
+			{
+				name: 'Sub Industry',
+				value: 'subIndustry',
+			},
+		],
+		default: 'subIndustry',
+		description: 'Specify the grouping criteria for choosing peers',
+	},
 ];
