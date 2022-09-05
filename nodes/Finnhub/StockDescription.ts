@@ -310,6 +310,87 @@ export const stockOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Stock Upgrade/Downgrade [PREMIUM]',
+				value: 'stockUpgradeDowngrade',
+				description: 'Get latest stock upgrade and downgrade',
+				action: 'Get latest stock upgrade and downgrade',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/upgrade-downgrade',
+						qs: {
+							symbol: '={{$parameter.symbol}}',
+							from: '={{$parameter.from}}',
+							to: '={{$parameter.to}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Revenue Estimates [PREMIUM]',
+				value: 'revenueEstimates',
+				description: "Get company's revenue estimates",
+				action: 'Get company revenue estimates',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/revenue-estimate',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							freq: '={{$parameter.freq}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'EBITDA Estimates [PREMIUM]',
+				value: 'ebitaEstimates',
+				description: "Get company's ebitda estimates",
+				action: 'Get company ebitda estimates',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/ebitda-estimate',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							freq: '={{$parameter.freq}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'EBIT Estimates [PREMIUM]',
+				value: 'ebitEstimates',
+				description: "Get company's ebit estimates",
+				action: 'Get company ebit estimates',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/ebit-estimate',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							freq: '={{$parameter.freq}}',
+						},
+					},
+				},
+			},
+			{
+				name: 'Earnings Estimates [PREMIUM]',
+				value: 'earningsEstimates',
+				description: "Get company's EPS estimates",
+				action: 'Get company EPS estimates',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/eps-estimate',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							freq: '={{$parameter.freq}}',
+						},
+					},
+				},
+			},
+			{
 				name: 'Earnings Surprises',
 				value: 'earningsSurprises',
 				description: 'Get company historical quarterly earnings surprise going back to 2000',
@@ -354,6 +435,25 @@ export const stockOperations: INodeProperties[] = [
 					},
 				},
 			},
+
+			{
+				name: 'Splits [PREMIUM]',
+				value: 'splits',
+				description: 'Get splits data for stocks',
+				action: 'Get splits data for stocks',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/stock/split',
+						qs: {
+							symbol: '={{$parameter.symbolRequired}}',
+							from: '={{$parameter.fromDateRequired}}',
+							to: '={{$parameter.fromDateRequired}}',
+						},
+					},
+				},
+			},
+
 			{
 				name: 'Dividends 2 (Basic) [PREMIUM]',
 				value: 'dividends2',
@@ -434,6 +534,7 @@ export const stockFields: INodeProperties[] = [
 					'peers',
 					'basicFinancials',
 					'financialsAsReported',
+					'stockUpgradeDowngrade',
 				],
 				resource: ['stock'],
 			},
@@ -461,6 +562,11 @@ export const stockFields: INodeProperties[] = [
 					'quote',
 					'lastBidAsk',
 					'dividends2',
+					'revenueEstimates',
+					'earningsEstimates',
+					'ebitaEstimates',
+					'ebitEstimates',
+					'splits',
 				],
 				resource: ['stock'],
 			},
@@ -597,7 +703,7 @@ export const stockFields: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar'],
+				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar', 'splits'],
 				resource: ['stock'],
 			},
 		},
@@ -610,7 +716,7 @@ export const stockFields: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar'],
+				operation: ['companyNews', 'insiderSentiment', 'ipoCalendar', 'splits'],
 				resource: ['stock'],
 			},
 		},
@@ -622,7 +728,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'dateTime',
 		displayOptions: {
 			show: {
-				operation: ['majorPressReleases', 'insiderTransactions'],
+				operation: ['majorPressReleases', 'insiderTransactions', 'stockUpgradeDowngrade'],
 				resource: ['stock'],
 			},
 		},
@@ -634,7 +740,7 @@ export const stockFields: INodeProperties[] = [
 		type: 'dateTime',
 		displayOptions: {
 			show: {
-				operation: ['majorPressReleases', 'insiderTransactions'],
+				operation: ['majorPressReleases', 'insiderTransactions', 'stockUpgradeDowngrade'],
 				resource: ['stock'],
 			},
 		},
@@ -666,5 +772,29 @@ export const stockFields: INodeProperties[] = [
 		],
 		default: 'subIndustry',
 		description: 'Specify the grouping criteria for choosing peers',
+	},
+
+	{
+		displayName: 'Freq',
+		name: 'freq',
+		type: 'options',
+		displayOptions: {
+			show: {
+				operation: ['revenueEstimates', 'earningsEstimates', 'ebitaEstimates', 'ebitEstimates'],
+				resource: ['stock'],
+			},
+		},
+		options: [
+			{
+				name: 'Annual',
+				value: 'annual',
+			},
+			{
+				name: 'Quarterly',
+				value: 'quarterly',
+			},
+		],
+		default: 'quarterly',
+		description: 'Can take 1 of the following values: annual, quarterly',
 	},
 ];
