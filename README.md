@@ -27,8 +27,8 @@
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 ## Credentials
-
-Get your [free API key](https://finnhub.io/dashboard) for Finnhub Stock API
+You need to create a Finnhub.io credential to use this node. Get your [free API key](https://finnhub.io/dashboard) for Finnhub Stock API.  
+Tipp: Add Credentials with your real Token and a Sandbox Token [to try Premium Operation].
 
 ## Compatibility
 
@@ -40,7 +40,7 @@ Add the node to your workflow and and get data from the finnhub.io REST API.
 
 ![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/component.png)
 
-![Trigger node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/node.png)
+![Node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/node.png)
 
 ## Operations
 * [Stock Fundamentals](https://finnhub.io/docs/api/symbol-search)
