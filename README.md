@@ -83,6 +83,10 @@ Für lokale Entwicklung und Beiträge:
 
 ## Version history
 
-* comming soon
-
+* 0.2.0
+  - Dependencies aktualisiert: TypeScript 5, Prettier 3, ESLint (TSLint entfernt)
+  - n8n-Pakete auf v1.x gehoben; Node-Inputs/Outputs an neue Typen angepasst
+  - Gulp auf v5 aktualisiert
+  - Security-Overrides für axios und form-data hinzugefügt
+  - README und Dev-Hinweise ergänzt
 
