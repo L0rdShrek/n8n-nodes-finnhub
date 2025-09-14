@@ -22,8 +22,8 @@
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
-    "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
     "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
   },
   "files": [
@@ -38,16 +38,21 @@
       "dist/nodes/Finnhub/Finnhub.node.js"
     ]
   },
+  "overrides": {
+    "axios": "^1.12.0",
+    "form-data": "^4.0.4"
+  },
   "devDependencies": {
-    "@types/express": "^4.17.6",
+    "@types/node": "^20.12.12",
+    "@types/express": "^5.0.3",
     "@types/request-promise-native": "~1.0.15",
-    "@typescript-eslint/parser": "^5.29.0",
-    "eslint-plugin-n8n-nodes-base": "^1.5.4",
-    "gulp": "^4.0.2",
-    "n8n-core": "^0.158.0",
-    "n8n-workflow": "^0.107.0",
-    "prettier": "^2.7.1",
-    "tslint": "^6.1.2",
-    "typescript": "~4.6.0"
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.1",
+    "n8n-core": "^1.14.1",
+    "n8n-workflow": "^1.82.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
   }
 }

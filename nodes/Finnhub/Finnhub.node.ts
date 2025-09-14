@@ -1,5 +1,11 @@
 /* eslint-disable n8n-nodes-base/node-class-description-credentials-name-unsuffixed */
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import {
+	INodeType,
+	INodeTypeDescription,
+	NodeConnectionType,
+	INodeInputConfiguration,
+	INodeOutputConfiguration,
+} from 'n8n-workflow';
 
 import { stockFields, stockOperations } from './StockDescription';
 import { indexFields, indexOperations } from './IndexDescription';
@@ -20,8 +26,8 @@ export class Finnhub implements INodeType {
 		defaults: {
 			name: 'Finnhub',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: ['main'] as unknown as Array<NodeConnectionType | INodeInputConfiguration>,
+		outputs: ['main'] as unknown as Array<NodeConnectionType | INodeOutputConfiguration>,
 		credentials: [
 			{
 				name: 'finnhub',

@@ -15,17 +15,20 @@ export class Finnhub implements ICredentialType {
 			displayName: 'Token',
 			name: 'token',
 			type: 'string',
+			typeOptions: {
+				password: true,
+			},
 			default: '',
 		},
 	];
-	authenticate = {
+	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
 				'X-Finnhub-Token': '={{$credentials.token}}',
 			},
 		},
-	} as IAuthenticateGeneric;
+	};
 
 	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {

@@ -22,6 +22,7 @@
 [Operations](#operations)  
 [Resources](#resources)  
 <!--[Version history](#version-history) -->  
+[Development](#development)  
 
 ## Installation
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
@@ -32,7 +33,8 @@ Tipp: Add Credentials with your real Token and a Sandbox Token [to try Premium O
 
 ## Compatibility
 
-The Latest Version of n8n
+- n8n: v1.x
+- Node.js (zum Bauen dieses Pakets): 18+ (getestet mit 18/20/22)
 
 ## Usage
 
@@ -59,9 +61,28 @@ Add the node to your workflow and and get data from the finnhub.io REST API.
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 * [Finnhub API Documentation](https://finnhub.io/docs/api)
 
+## Development
+
+Für lokale Entwicklung und Beiträge:
+
+- Voraussetzungen
+  - Node.js 18+ und npm
+  - TypeScript 5, ESLint 8, Prettier 3 (werden als Dev-Dependencies installiert)
+
+- Nützliche Skripte
+  - `npm run build` – kompiliert TypeScript und kopiert Icons (Gulp v5)
+  - `npm run dev` – TypeScript im Watch-Modus
+  - `npm run lint` – lintet mit ESLint und den n8n-Nodes-Base-Regeln
+  - `npm run lintfix` – wie oben, aber mit automatischen Fixes
+  - `npm run format` – formatiert mit Prettier
+
+- Hinweise
+  - Dieses Paket verwendet ESLint (TSLint ist entfernt).
+  - Der TypeScript-Compiler ist auf `skipLibCheck` konfiguriert, um fehlerhafte Typdefinitionen externer Abhängigkeiten zu ignorieren.
+  - Sicherheitsrelevante Unterabhängigkeiten werden bei Bedarf über `package.json` → `overrides` erzwungen (z. B. für `axios` und `form-data`).
+
 ## Version history
 
 * comming soon
-
 
 
