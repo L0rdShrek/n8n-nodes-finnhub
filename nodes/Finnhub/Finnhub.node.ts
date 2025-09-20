@@ -7,12 +7,7 @@ import {
 	INodeOutputConfiguration,
 } from 'n8n-workflow';
 
-import { stockFields, stockOperations } from './StockDescription';
-import { indexFields, indexOperations } from './IndexDescription';
-import { etfFields, etfOperations } from './ETFDescription';
-import { forexFields, forexOperations } from './ForexDescription';
-import { cryptoFields, cryptoOperations } from './CryptoDescription';
-import { alternativeFields, alternativeOperations } from './AlternativeDescription';
+import { fieldProperties, operationProperties, resourceOptions } from './operations';
 
 export class Finnhub implements INodeType {
 	description: INodeTypeDescription = {
@@ -43,56 +38,40 @@ export class Finnhub implements INodeType {
 		},
 		properties: [
 			{
+				displayName: 'Premium Access',
+				name: 'hasPremium',
+				type: 'boolean',
+				default: '={{$credentials.finnhub?.premium ?? false}}',
+				description: 'Toggle premium Finnhub endpoints based on your credential.',
+			},
+			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
-				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
-				options: [
-					{
-						name: 'Stock',
-						value: 'stock',
+				displayOptions: {
+					show: {
+						hasPremium: [false],
 					},
-					{
-						name: 'Index',
-						value: 'index',
-					},
-					{
-						name: 'ETF',
-						value: 'etf',
-					},
-					{
-						name: 'Forex',
-						value: 'forex',
-					},
-					{
-						name: 'Crypto',
-						value: 'crypto',
-					},
-					{
-						name: 'Alternative',
-						value: 'alternative',
-					},
-				],
-				default: 'stock',
+				},
+				options: resourceOptions.free,
+				default: resourceOptions.free[0]?.value ?? '',
 			},
-			...stockOperations,
-			...stockFields,
-
-			...indexOperations,
-			...indexFields,
-
-			...etfOperations,
-			...etfFields,
-
-			...forexOperations,
-			...forexFields,
-
-			...cryptoOperations,
-			...cryptoFields,
-
-			...alternativeOperations,
-			...alternativeFields,
+			{
+				displayName: 'Resource',
+				name: 'resource',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						hasPremium: [true],
+					},
+				},
+				options: resourceOptions.premium,
+				default: resourceOptions.premium[0]?.value ?? '',
+			},
+			...operationProperties,
+			...fieldProperties,
 		],
 	};
 

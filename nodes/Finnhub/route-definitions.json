@@ -1,0 +1,1856 @@
+[
+  {
+    "method": "GET",
+    "route": "/search",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "q",
+        "required": true,
+        "description": "Query text can be symbol, name, isin, or cusip."
+      },
+      {
+        "name": "exchange",
+        "required": false,
+        "description": "Exchange limit."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/symbol",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Exchange you want to get the list of symbols from. List of exchange codes can be found here."
+      },
+      {
+        "name": "mic",
+        "required": false,
+        "description": "Filter by MIC code."
+      },
+      {
+        "name": "securityType",
+        "required": false,
+        "description": "Filter by security type used by OpenFigi standard."
+      },
+      {
+        "name": "currency",
+        "required": false,
+        "description": "Filter by currency."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/market-status",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Exchange code."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/market-holiday",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Exchange code."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/profile",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol of the company: AAPL e.g."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ISIN"
+      },
+      {
+        "name": "cusip",
+        "required": false,
+        "description": "CUSIP"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/profile2",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol of the company: AAPL e.g."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ISIN"
+      },
+      {
+        "name": "cusip",
+        "required": false,
+        "description": "CUSIP"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/executive",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/news",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "category",
+        "required": true,
+        "description": "This parameter can be 1 of the following values general, forex, crypto, merger."
+      },
+      {
+        "name": "minId",
+        "required": false,
+        "description": "Use this field to get only news after this ID. Default to 0"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/company-news",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/press-releases",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From time: 2020-01-01."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To time: 2020-01-05."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/news-sentiment",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/peers",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "grouping",
+        "required": false,
+        "description": "Specify the grouping criteria for choosing peers.Supporter values: sector, industry, subIndustry. Default to subIndustry."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/metric",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "metric",
+        "required": true,
+        "description": "Metric type. Can be 1 of the following values all"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/ownership",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "description": "Limit number of results. Leave empty to get the full list."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/fund-ownership",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "description": "Limit number of results. Leave empty to get the full list."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/institutional/profile",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "cik",
+        "required": false,
+        "description": "Filter by CIK. Leave blank to get the full list."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/institutional/portfolio",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "cik",
+        "required": true,
+        "description": "Fund's CIK."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/institutional/ownership",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Filter by symbol."
+      },
+      {
+        "name": "cusip",
+        "required": true,
+        "description": "Filter by CUSIP."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/insider-transactions",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL. Leave this param blank to get the latest transactions."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date: 2020-03-15."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date: 2020-03-16."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/insider-sentiment",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date: 2020-03-15."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date: 2020-03-16."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/financials",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "statement",
+        "required": true,
+        "description": "Statement can take 1 of these values bs, ic, cf for Balance Sheet, Income Statement, Cash Flow respectively."
+      },
+      {
+        "name": "freq",
+        "required": true,
+        "description": "Frequency can take 1 of these values annual, quarterly, ttm, ytd. TTM (Trailing Twelve Months) option is available for Income Statement and Cash Flow. YTD (Year To Date) option is only available for Cash Flow."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/financials-reported",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol."
+      },
+      {
+        "name": "cik",
+        "required": false,
+        "description": "CIK."
+      },
+      {
+        "name": "accessNumber",
+        "required": false,
+        "description": "Access number of a specific report you want to retrieve financials from."
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "Frequency. Can be either annual or quarterly. Default to annual."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date YYYY-MM-DD. Filter for endDate."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date YYYY-MM-DD. Filter for endDate."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/revenue-breakdown",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol."
+      },
+      {
+        "name": "cik",
+        "required": false,
+        "description": "CIK."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/filings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol. Leave symbol,cik and accessNumber empty to list latest filings."
+      },
+      {
+        "name": "cik",
+        "required": false,
+        "description": "CIK."
+      },
+      {
+        "name": "accessNumber",
+        "required": false,
+        "description": "Access number of a specific report you want to retrieve data from."
+      },
+      {
+        "name": "form",
+        "required": false,
+        "description": "Filter by form. You can use this value NT 10-K to find non-timely filings for a company."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date: 2023-03-15."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date: 2023-03-16."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/filings-sentiment",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "accessNumber",
+        "required": true,
+        "description": "Access number of a specific report you want to retrieve data from."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/similarity-index",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol. Required if cik is empty"
+      },
+      {
+        "name": "cik",
+        "required": false,
+        "description": "CIK. Required if symbol is empty"
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "annual or quarterly. Default to annual"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/calendar/ipo",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date: 2020-03-15."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date: 2020-03-16."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/dividend",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/sector/metrics",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "region",
+        "required": true,
+        "description": "Region. A list of supported values for this field can be found here."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/price-metric",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "date",
+        "required": false,
+        "description": "Get data on a specific date in the past. The data is available weekly so your date will be automatically adjusted to the last day of that week."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/ca/symbol-change",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/ca/isin-change",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/historical-market-cap",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/historical-employee-count",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/recommendation",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/price-target",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/upgrade-downgrade",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol of the company: AAPL. If left blank, the API will return latest stock upgrades/downgrades."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date: 2000-03-15."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date: 2020-03-16."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/revenue-estimate",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "Can take 1 of the following values: annual, quarterly. Default to quarterly"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/eps-estimate",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "Can take 1 of the following values: annual, quarterly. Default to quarterly"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/ebitda-estimate",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "Can take 1 of the following values: annual, quarterly. Default to quarterly"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/ebit-estimate",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "freq",
+        "required": false,
+        "description": "Can take 1 of the following values: annual, quarterly. Default to quarterly"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/earnings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "description": "Limit number of period returned. Leave blank to get the full history."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/calendar/earnings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date: 2020-03-15."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date: 2020-03-16."
+      },
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Filter by symbol: AAPL."
+      },
+      {
+        "name": "international",
+        "required": false,
+        "description": "Set to true to include international markets. Default value is false"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/quote",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/candle",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "UNIX timestamp. Interval initial value."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "UNIX timestamp. Interval end value."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/tick",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "date",
+        "required": true,
+        "description": "Date: 2020-04-02."
+      },
+      {
+        "name": "limit",
+        "required": true,
+        "description": "Limit number of ticks returned. Maximum value: 25000"
+      },
+      {
+        "name": "skip",
+        "required": true,
+        "description": "Number of ticks to skip. Use this parameter to loop through the entire data."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/bbo",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "date",
+        "required": true,
+        "description": "Date: 2020-04-02."
+      },
+      {
+        "name": "limit",
+        "required": true,
+        "description": "Limit number of ticks returned. Maximum value: 25000"
+      },
+      {
+        "name": "skip",
+        "required": true,
+        "description": "Number of ticks to skip. Use this parameter to loop through the entire data."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/bidask",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/split",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/dividend2",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/index/constituents",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "symbol"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/index/historical-constituents",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "symbol"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/etf/profile",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "ETF symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ETF isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/etf/holdings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "ETF symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ETF isin."
+      },
+      {
+        "name": "skip",
+        "required": false,
+        "description": "Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip=0 or not set."
+      },
+      {
+        "name": "date",
+        "required": false,
+        "description": "Query holdings by date. You can use either this param or skip param, not both."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/etf/sector",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "ETF symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ETF isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/etf/country",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "ETF symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ETF isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/profile",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Fund's symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "Fund's isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/holdings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Fund's symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "Fund's isin."
+      },
+      {
+        "name": "skip",
+        "required": false,
+        "description": "Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip=0 or not set."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/sector",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Mutual Fund symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "Fund's isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/country",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol."
+      },
+      {
+        "name": "isin",
+        "required": false,
+        "description": "Fund's isin."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/eet",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "isin",
+        "required": true,
+        "description": "ISIN."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/mutual-fund/eet-pai",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "isin",
+        "required": true,
+        "description": "ISIN."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/bond/profile",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "isin",
+        "required": false,
+        "description": "ISIN"
+      },
+      {
+        "name": "cusip",
+        "required": false,
+        "description": "CUSIP"
+      },
+      {
+        "name": "figi",
+        "required": false,
+        "description": "FIGI"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/bond/price",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "isin",
+        "required": true,
+        "description": "ISIN."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "UNIX timestamp. Interval initial value."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "UNIX timestamp. Interval end value."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/bond/tick",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "isin",
+        "required": true,
+        "description": "ISIN."
+      },
+      {
+        "name": "date",
+        "required": true,
+        "description": "Date: 2020-04-02."
+      },
+      {
+        "name": "limit",
+        "required": true,
+        "description": "Limit number of ticks returned. Maximum value: 25000"
+      },
+      {
+        "name": "skip",
+        "required": true,
+        "description": "Number of ticks to skip. Use this parameter to loop through the entire data."
+      },
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Currently support the following values: trace."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/bond/yield-curve",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "code",
+        "required": true,
+        "description": "Bond's code. You can find the list of supported code here."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/forex/exchange",
+    "premium": false,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/forex/symbol",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Exchange you want to get the list of symbols from."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/forex/candle",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Use symbol returned in /forex/symbol endpoint for this field."
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "UNIX timestamp. Interval initial value."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "UNIX timestamp. Interval end value."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/forex/rates",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "base",
+        "required": false,
+        "description": "Base currency. Default to EUR."
+      },
+      {
+        "name": "date",
+        "required": false,
+        "description": "Date. Leave blank to get the latest data."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/crypto/exchange",
+    "premium": false,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/crypto/symbol",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "exchange",
+        "required": true,
+        "description": "Exchange you want to get the list of symbols from."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/crypto/profile",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Crypto symbol such as BTC or ETH."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/crypto/candle",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Use symbol returned in /crypto/symbol endpoint for this field."
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "UNIX timestamp. Interval initial value."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "UNIX timestamp. Interval end value."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/scan/pattern",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol"
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/scan/support-resistance",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol"
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/scan/technical-indicator",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "symbol"
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/indicator",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "symbol"
+      },
+      {
+        "name": "resolution",
+        "required": true,
+        "description": "Supported resolution includes 1, 5, 15, 30, 60, D, W, M .Some timeframes might not be available depending on the exchange."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "UNIX timestamp. Interval initial value."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "UNIX timestamp. Interval end value."
+      },
+      {
+        "name": "indicator",
+        "required": true,
+        "description": "Indicator name. Full list can be found here."
+      },
+      {
+        "name": "indicator_fields",
+        "required": false,
+        "description": "Check out this page to see which indicators and params are supported."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/transcripts/list",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol: AAPL. Leave empty to list the latest transcripts"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/transcripts",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "id",
+        "required": true,
+        "description": "Transcript's id obtained with Transcripts List endpoint."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/earnings-call-live",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date YYYY-MM-DD."
+      },
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Filter by symbol: AAPL."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/presentation",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/social-sentiment",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Company symbol."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/investment-theme",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "theme",
+        "required": true,
+        "description": "Investment theme. A full list of themes supported can be found here."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/supply-chain",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/esg",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/historical-esg",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/earnings-quality-score",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "freq",
+        "required": true,
+        "description": "Frequency. Currently support annual and quarterly"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/uspto-patent",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/visa-application",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD. Filter on the beginDate column."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD. Filter on the beginDate column."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/lobbying",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/usa-spending",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD. Filter for actionDate"
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD. Filter for actionDate"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/congressional-trading",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol of the company: AAPL."
+      },
+      {
+        "name": "from",
+        "required": true,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": true,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/bank-branch",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/fda-advisory-committee-calendar",
+    "premium": false,
+    "arguments": []
+  },
+  {
+    "method": "POST",
+    "route": "/ai-chat",
+    "premium": true,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/stock/revenue-breakdown2",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": true,
+        "description": "Symbol."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/stock/international-filings",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "symbol",
+        "required": false,
+        "description": "Symbol. Leave empty to list latest filings."
+      },
+      {
+        "name": "country",
+        "required": false,
+        "description": "Filter by country using country's 2-letter code."
+      },
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date: 2023-01-15."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date: 2023-12-16."
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "route": "/global-filings/search",
+    "premium": true,
+    "arguments": []
+  },
+  {
+    "method": "POST",
+    "route": "/global-filings/search-in-filing",
+    "premium": true,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/global-filings/filter",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "field",
+        "required": true,
+        "description": "Field to get available filters. Available filters are \"countries\", \"exchanges\", \"exhibits\", \"forms\", \"gics\", \"naics\", \"caps\", \"acts\", and \"sort\"."
+      },
+      {
+        "name": "source",
+        "required": false,
+        "description": "Get available forms for each source."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/global-filings/download",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "documentId",
+        "required": true,
+        "description": "Document's id. Note that this is different from filingId as 1 filing can contain multiple documents."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/country",
+    "premium": false,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/calendar/economic",
+    "premium": true,
+    "arguments": [
+      {
+        "name": "from",
+        "required": false,
+        "description": "From date YYYY-MM-DD."
+      },
+      {
+        "name": "to",
+        "required": false,
+        "description": "To date YYYY-MM-DD."
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "route": "/economic/code",
+    "premium": false,
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "route": "/economic",
+    "premium": false,
+    "arguments": [
+      {
+        "name": "code",
+        "required": true,
+        "description": "Economic code."
+      }
+    ]
+  }
+]

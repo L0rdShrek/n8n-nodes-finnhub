@@ -20,6 +20,13 @@ export class Finnhub implements ICredentialType {
 			},
 			default: '',
 		},
+		{
+			displayName: 'Premium Access',
+			name: 'premium',
+			type: 'boolean',
+			default: false,
+			description: 'Enable if your Finnhub subscription includes premium endpoints.',
+		},
 	];
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
