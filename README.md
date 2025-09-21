@@ -4,89 +4,101 @@
   🛠 Finnhub.io REST API node for <code>n8n</code>
 </h1>
 <p align="center">
-	This is an n8n community node. It lets you use _finnhub.io_ in your n8n workflows.
+	Use the full Finnhub.io REST API inside your n8n workflows.
 	<br />
 	<br />
-	finnhub.io is a Real-Time RESTful APIs and Websocket for Stocks, Currencies, and Crypto.  
-	<br />
-	Access real-time stock API, institutional-grade fundamental and alternative data to supercharge your investment for FREE.
+	Finnhub delivers real-time market data, fundamentals, alternative datasets, and premium analytics for stocks, forex, crypto, and more.
 </p>
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
+## Features
+- Covers 90+ Finnhub REST endpoints grouped by resource (stocks, ETFs, funds, forex, crypto, technical analysis, enterprise, institutional, economic, and alternative data).
+- Premium toggle surfaces additional paid endpoints only when your credential allows it.
+- Generated operations automatically include argument descriptions straight from Finnhub docs.
+- Ships with build, lint, and test scripts to keep the node production-ready.
 
 [Installation](#installation)  
-[Credentials](#credentials)  <!-- delete if no auth needed -->  
+[Credentials](#credentials)  
 [Compatibility](#compatibility)  
-[Usage](#usage)  <!-- delete if not using this section -->  
+[Usage](#usage)  
 [Operations](#operations)  
 [Resources](#resources)  
-<!--[Version history](#version-history) -->  
 [Development](#development)  
+[Version history](#version-history)  
 
 ## Installation
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+Follow the [community node installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n documentation.
 
 ## Credentials
-You need to create a Finnhub.io credential to use this node. Get your [free API key](https://finnhub.io/dashboard) for Finnhub Stock API.  
-Tipp: Add Credentials with your real Token and a Sandbox Token [to try Premium Operation].
+1. Create an account and API token in the [Finnhub dashboard](https://finnhub.io/dashboard).
+2. In n8n, add a new **Finnhub.io API** credential and paste the token into the `Token` field.
+3. Enable the `Premium Access` checkbox if your subscription unlocks premium endpoints. The node exposes the premium-only resources and operations automatically when this flag (or the credential) is set.
+
+> Tip: You can keep two credentials—one with a sandbox token and one with a live token—to switch between environments quickly.
 
 ## Compatibility
 
 - n8n: v1.x
-- Node.js (zum Bauen dieses Pakets): 18+ (getestet mit 18/20/22)
+- Node.js for local builds: 18+ (tested with 18, 20, 22)
 
 ## Usage
 
-Add the node to your workflow and and get data from the finnhub.io REST API.
+1. Drop the **Finnhub.io** node into your workflow.
+2. Select the credential you created earlier. The node prefills the `Premium Access` toggle based on the credential setting.
+3. Choose a `Resource`, then pick an `Operation`. Field names and descriptions come directly from the Finnhub API and match the official documentation.
+4. Provide any required parameters. Optional parameters can be left empty and are excluded from the request automatically.
 
 ![Component palette with Finnhub Node](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/component.png)
 
 ![Node options in workflow](https://raw.githubusercontent.com/L0rdShrek/n8n-nodes-finnhub/master/docs/node.png)
 
 ## Operations
-* [Stock Fundamentals](https://finnhub.io/docs/api/symbol-search)
-* [Stock Estimates](https://finnhub.io/docs/api/recommendation-trends)
-* [Stock Price](https://finnhub.io/docs/api/quote)
-* [ETFs & Indices](https://finnhub.io/docs/api/indices-constituents)
-* [Mutual Funds](https://finnhub.io/docs/api/symbol-search)
-<!--* [Bonds](https://finnhub.io/docs/api/bond-profile) comming soon-->
-* [Forex](https://finnhub.io/docs/api/forex-exchanges)
-* [Crypto](https://finnhub.io/docs/api/crypto-exchanges)
-* [Technical Analysis](https://finnhub.io/docs/api/pattern-recognition)
-* [Alternative Data](https://finnhub.io/docs/api/transcripts-list)
-* [Economic](https://finnhub.io/docs/api/country)
+
+Every REST route defined in `nodes/Finnhub/route-definitions.json` is available in the node. Resources are grouped to mirror the Finnhub documentation:
+
+- **Stock**: Symbol search, quotes, profiles, filings, transcripts, market status, calendars, alternative metrics, and 30+ premium analytics such as ESG, supply chain, valuations, corporate actions, and similarity indexes.
+- **ETF & Mutual Fund**: Holdings, profiles, country/sector allocation; premium access adds EET/Pai disclosures and segmentation.
+- **Index**: Current and historical constituents, including premium-only datasets.
+- **Bond**: Yield curves, tick data, price snapshots, and profiles (premium).
+- **Forex & Crypto**: Exchange and symbol directories, candles, and premium rate/profile endpoints.
+- **Technical Analysis**: Pattern scans, technical indicator screens, and indicator calculations (premium).
+- **Institutional & Enterprise Data**: Ownership, portfolios, bank branches, global filings search/download, AI chat, and more.
+- **Economic & Alternative Data**: Country codes, macroeconomic indicators, and the FDA advisory calendar.
+
+Premium-only endpoints are clearly marked inside n8n. Disable `Premium Access` to limit the operation list to free APIs.
+
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-* [Finnhub API Documentation](https://finnhub.io/docs/api)
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [Finnhub API Documentation](https://finnhub.io/docs/api)
 
 ## Development
 
-Für lokale Entwicklung und Beiträge:
+Local development and contributions:
 
-- Voraussetzungen
-  - Node.js 18+ und npm
-  - TypeScript 5, ESLint 8, Prettier 3 (werden als Dev-Dependencies installiert)
+- Requirements
+  - Node.js 18+ and npm
+  - TypeScript 5, ESLint 8, Prettier 3 (installed as devDependencies)
 
-- Nützliche Skripte
-  - `npm run build` – kompiliert TypeScript und kopiert Icons (Gulp v5)
-  - `npm run dev` – TypeScript im Watch-Modus
-  - `npm run lint` – lintet mit ESLint und den n8n-Nodes-Base-Regeln
-  - `npm run lintfix` – wie oben, aber mit automatischen Fixes
-  - `npm run format` – formatiert mit Prettier
+- Helpful scripts
+  - `npm run build` – compiles TypeScript and copies icons with Gulp 5
+  - `npm run dev` – TypeScript watch mode for rapid iteration
+  - `npm run lint` – validates code with ESLint and n8n node rules
+  - `npm run lintfix` – same as above with automatic fixes
+  - `npm run format` – formats source files with Prettier
+  - `npm run test` – builds the project and executes Node.js test suites
 
-- Hinweise
-  - Dieses Paket verwendet ESLint (TSLint ist entfernt).
-  - Der TypeScript-Compiler ist auf `skipLibCheck` konfiguriert, um fehlerhafte Typdefinitionen externer Abhängigkeiten zu ignorieren.
-  - Sicherheitsrelevante Unterabhängigkeiten werden bei Bedarf über `package.json` → `overrides` erzwungen (z. B. für `axios` und `form-data`).
+- Notes
+  - ESLint replaces the deprecated TSLint setup.
+  - TypeScript uses `skipLibCheck` to avoid noise from third-party typings.
+  - Security-sensitive sub-dependencies (for example, `axios`, `form-data`) are pinned via `package.json` overrides.
 
 ## Version history
 
-* 0.2.0
-  - Dependencies aktualisiert: TypeScript 5, Prettier 3, ESLint (TSLint entfernt)
-  - n8n-Pakete auf v1.x gehoben; Node-Inputs/Outputs an neue Typen angepasst
-  - Gulp auf v5 aktualisiert
-  - Security-Overrides für axios und form-data hinzugefügt
-  - README und Dev-Hinweise ergänzt
-
+- 0.2.0
+  - Dependencies bumped (TypeScript 5, Prettier 3, ESLint; removed TSLint)
+  - Updated to n8n v1.x APIs and adjusted node inputs/outputs
+  - Migrated Gulp to v5
+  - Added security overrides for axios and form-data
+  - Documented development setup and usage guidance
